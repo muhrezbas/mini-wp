@@ -58,25 +58,5 @@ class ControllerArticle {
         }
         
     }
-    static findByCategory(req, res, next) {
-        let value = req.query.category
-        console.log(req.query)
-        Article.find({category: value})
-            .then((data) => {
-                // res.send(data)
-                res.json(data)
-            })
-            .catch(next)
-    }
-    static findCategory(req, res, next) {
-        let value = Object.values(req.query)
-        console.log(req.query)
-        Article.find().distinct('category')
-            .then((data) => {
-                // res.send(data)
-                res.json(data)
-            })
-            .catch(next)
-    }
 }
 module.exports = ControllerArticle

@@ -5,8 +5,6 @@ const images = require('../helpers/images')
 const authenticate = require('../middlewares/authenticate')
 const authorization = require('../middlewares/authorizations')
 router.use(authenticate)
-router.get("/category", articleController.findCategory)
-router.get("/category/filter?", articleController.findByCategory)
 router.post("/", articleController.create)
 router.post('/upload',
   images.multer.single('image'), 
