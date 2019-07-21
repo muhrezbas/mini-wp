@@ -12,7 +12,7 @@ console.log(port)
 const routes = require('./routes/index')
 
 
-mongoose.connect('mongodb://localhost:27017/mini-wp', {useNewUrlParser: true, useCreateIndex: true});
+mongoose.connect('mongodb://localhost:27017/mini-wp-ver2', {useNewUrlParser: true, useCreateIndex: true});
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('Connected to the database')

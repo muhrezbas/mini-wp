@@ -1,10 +1,12 @@
 const Article = require('../models/article')
+const User = require('../models/user')
 class ControllerArticle {
     static create(req, res, next) {
-        const {title,content} = req.body 
-        let input = {title,content}
+        const {title,content,image} = req.body 
+        let input = {title,content,image}
+        console.log(input.image)
         // console.log(req.headers.decoded)
-        // input.user = req.headers.decoded._id
+        input.author = req.headers.decoded._id
         // console.log(input)
         
         // res.send(input)
@@ -15,14 +17,14 @@ class ControllerArticle {
             .catch(next)
     }
     static get(req, res, next) {
-        Article.find()
+        Article.find().populate('author')
             .then((articles) => {
                 res.status(200).json(articles)
             })
             .catch(next)
     }
     static getOne(req, res, next) {
-        Article.findById(req.params.id)
+        Article.findById(req.params.id).populate('author')
             .then((article) => {
                 res.status(200).json(article)
             })

@@ -1,30 +1,26 @@
-// const jwt = require('jsonwebtoken')
-// const Todo = require('../models/todo')
-// module.exports = (req, res, next) => {
-//     console.log('halo')
-//     Todo.findById(req.params.id)
-//         // res.json(req.params)
-//         .then(todo => {
-//             // res.json(user)
-//             console.log(todo)
+const jwt = require('jsonwebtoken')
+const Article = require('../models/article')
+module.exports = (req, res, next) => {
+    console.log('halo')
+    Article.findById(req.params.id)
+        // res.json(req.params)
+        .then(article => {
+            // res.json(user)
+            console.log(article)
 
-//             if (todo) {
-//                 // console.log(req.user.id)
-//                 // console.log(user.UserId)
-//                 console.log(todo.user)
-//                 for (let i = 0; i < todo.user.length; i++) {
-//                     console.log(todo.user[i])
-//                     console.log(req.headers.decoded._id)
-//                     if (todo.user[i] == req.headers.decoded._id) {
-//                         console.log('halo')
-//                         next()
-//                         break
-//                     } else {
-//                         next({ status: 403, message: 'not authorize' })
-//                     }
-//                 }
-//             } else {
-//                 next({ status: 403, message: 'not authorize' })
-//             }
-//         })
-// }
+            if (article) {
+                // console.log(req.user.id)
+                // console.log(user.UserId)
+                console.log(article.author)
+                    console.log(req.headers.decoded._id)
+                    if (article.author == req.headers.decoded._id) {
+                        console.log('halo')
+                        next()
+                    } else {
+                        next({ status: 403, message: 'not authorize' })
+                    }
+            } else {
+                next({ status: 403, message: 'not authorize' })
+            }
+        })
+}
