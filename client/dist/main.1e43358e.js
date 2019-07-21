@@ -50638,8 +50638,6 @@ var _default = {
 
         _this.$emit("get-token", data);
 
-        localStorage.setItem("token", data.access_token);
-
         _this.$refs["modal-1"].hide();
 
         Swal.fire({
@@ -50666,8 +50664,6 @@ var _default = {
 
         _this2.$emit("get-token", data);
 
-        localStorage.setItem("token", data.access_token);
-
         _this2.$refs["modal-2"].hide();
 
         Swal.fire({
@@ -50690,7 +50686,6 @@ var _default = {
         }).then(function (_ref3) {
           var data = _ref3.data;
           console.log(data);
-          localStorage.setItem("token", data.access_token);
 
           _this3.$emit("get-token", data);
 
@@ -53963,6 +53958,8 @@ var _default = {
     getToken: function getToken(data) {
       console.log(data);
       this.token = data.access_token;
+      localStorage.setItem("token", data.access_token);
+      this.getArticle();
     },
     getData: function getData() {
       var _this = this;
@@ -53978,6 +53975,8 @@ var _default = {
     },
     signOut: function signOut() {
       this.token = "";
+      this.articles = [];
+      this.onePost = [];
       localStorage.removeItem("token");
     },
     getOne: function getOne(id) {
@@ -54161,7 +54160,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35051" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42367" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -102,6 +102,8 @@ export default {
     getToken(data) {
       console.log(data);
       this.token = data.access_token;
+      localStorage.setItem("token", data.access_token);
+      this.getArticle();
     },
     getData() {
       instance
@@ -117,6 +119,8 @@ export default {
     },
     signOut() {
       this.token = "";
+      this.articles = [];
+      this.onePost = [];
       localStorage.removeItem("token");
     },
     getOne(id) {

@@ -168,7 +168,7 @@ export default {
         })
         .then(({ data }) => {
           this.$emit("get-token", data);
-          localStorage.setItem("token", data.access_token);
+
           this.$refs["modal-1"].hide();
           Swal.fire({
             type: "success",
@@ -192,7 +192,7 @@ export default {
         })
         .then(({ data }) => {
           this.$emit("get-token", data);
-          localStorage.setItem("token", data.access_token);
+  
           this.$refs["modal-2"].hide();
           Swal.fire({
             type: "success",
@@ -214,7 +214,7 @@ export default {
             .post("/users/signin/google", { token: token })
             .then(({ data }) => {
               console.log(data);
-              localStorage.setItem("token", data.access_token);
+          
               this.$emit("get-token", data);
               Swal.fire({
                 type: "success",
